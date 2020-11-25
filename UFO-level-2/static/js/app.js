@@ -3,15 +3,29 @@ var tableData = data;
 
 // select the button
 var button = d3.select("#filter-btn");
-
+var clear = d3.select("#clear-btn");
+// select the form
+var form  = d3.select("#form1");
 // select the two dropdown selections
 var slist  = d3.select("#slist");
 var slist2  = d3.select("#list1");
 
 // create event handlers for clicking the button or pressing the enter key
 button.on("click", runEnter);
+clear.on("click", runClear);
+form.on("submit", runState);
 //slist3.on("change", runEnter3);
 slist2.on("change", runEnter2);
+
+function runPrint() {
+    d3.event.preventDefault();
+
+    var inputElement = d3.select("#state");
+
+    var inputValue = inputElement.property("value");
+
+    document.getElementById("demo").innerHTML = `${inputValue}`;
+};
 
 function runEnter2(){
     // prevent the page from refreshing
@@ -73,7 +87,7 @@ function runEnter() {
 
     // create a reference to the table body
     var tbody = d3.select("tbody");
-    
+
     // remove any children from the table
     tbody.html("");
 
@@ -99,4 +113,43 @@ function runClear() {
     var tbody = d3.select("tbody");
     // remove any children from the table
     tbody.html("");
+};
+
+function runState(){
+    // prevent the page from refreshing
+    d3.event.preventDefault();
+    // select the input element and get the raw HTML node
+    var inputElement1 = d3.select("#state");
+    
+    
+    // get the value property of the input element
+    var inputValue = inputElement1.property("value");
+    
+    
+    // filter() uses input as its argument
+    var filteredData1 = tableData.filter(ufo => ufo.state === inputValue);
+    
+    // test
+    console.log(filteredData1);
+
+    // create a reference to the table body
+    var tbody = d3.select("tbody");
+    // remove any children from the table
+    tbody.html("");
+
+    // loop through filtered data and console.log each report object
+    filteredData1.forEach(function(ufoReport) {
+        console.log(ufoReport);
+        // append one table row 'tr' for each report object
+        var row = tbody.append("tr");
+
+        // use 'Object.entries' to console.log each report value
+        Object.entries(ufoReport).forEach(function([key, value]) {
+            console.log(key, value);
+            // use d3 to append 1 cell for each value in the report object (column)
+            var cell = row.append("td");
+            // use d3 to update each cell's text with report values
+            cell.text(value);
+        });
+    });
 };

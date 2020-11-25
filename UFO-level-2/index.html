@@ -25,9 +25,10 @@
       <h1>UFO Sightings</h1>
       <p>The Truth is Out There</p>
     </div>
+    
     <div class="container">
       <div class="row margin-top-50">
-        <div class="col-md-2">
+        <div class="col-md-12">
           <aside class="filters">
             <div class="panel panel-default">
               <div class="panel-heading">Filter Search</div>
@@ -90,13 +91,35 @@
                       <option>wv</option>
                     </select>
                   </div>
-                  <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
                 </form>
+                
               </div>
             </div>
           </aside>
         </div>
-        <div class="col-md-10">
+      </div>
+      <div class="row margin-top-50">
+        <div class="col-md-4">
+          <aside class="filters">
+            <div class="panel panel-default">
+              <div class="panel-heading">Filter Search</div>
+              <div class="panel-body">
+                <label for="filtered">Enter Filter Variables</label>
+                <form id="form1">
+                  <div class="form-group">
+                    <input class="form-control" id="state" type="text" placeholder="Enter Text">
+                  </div>
+                </form>
+                <button id="clear-btn" type="button" class="btn btn-default">Clear Table</button>
+                <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      
+          
+        <div class="col-md-8">
+          <h1 id="demo"></h1>
           <div id="table-area" class="">
             <table id="ufo-table" class="table table-striped">
               <thead>
