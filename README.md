@@ -6,6 +6,6 @@ JavaScript project to create a dynamic table based upon a dataset containing eye
 
 ![ufoDemo](UFO-level-2/UFO2_demo.gif)
 
-Users can set multiple filters and serach for UFO sightings using the following criteria: date, city, state, country, shape, any combination or all of the above.
+Users can set multiple filters and search for UFO sightings using the following criteria: date, city, state, country, shape, any combination or all of the above.
 
 https://stuhunter4.github.io/javascript_UFO_sightings/UFO-level-2/index.html
